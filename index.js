@@ -10,11 +10,23 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 
+const url = "mongodb+srv://localhost:27017/myLoginRegisterDB"
+
 mongoose.connect("mongodb://localhost:27017/myLoginRegisterDB", {
+// mongoose.connect("mongodb+srv://abc:abc@cluster0.ltigg.mongodb.net/Cluster0?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
     console.log("DB connected")
+})
+
+const db = mongoose.connection
+db.once('open', _ => {
+  console.log('Database connected:', url)
+})
+
+db.on('error', err => {
+  console.error('connection error:', err)
 })
 
 const userSchema = new mongoose.Schema({
@@ -52,6 +64,8 @@ app.post("/register", (req, res)=> {
                 email,
                 password
             })
+            
+            console.log(user);
             user.save(err => {
                 if(err) {
                     res.send(err)

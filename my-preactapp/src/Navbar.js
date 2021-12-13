@@ -42,23 +42,23 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li class="nav-item">
-                  <NavLink class="nav-link" to="/contact">
+                  <NavLink className="nav-link" to="/contact">
                     Contact
                   </NavLink>
                 </li>
+                <li>
+                <NavLink to="/login" className="nav-link">
+                  Login
+                  </NavLink>
+                </li>
+                <li>
+                <NavLink to="/register" className="nav-link">
+                  Register
+                  </NavLink>
+                </li>
               </ul>
-              <form class="d-flex">
-                <button class="btn  btn-style" type="submit">
-                <NavLink to="/login">
-                  Sign Up
-                  </NavLink>
-                </button>
-                <button class="btn  btn-style btn-style-border" type="submit">
-                <NavLink to="/register">
-                  Log in
-                  </NavLink>
-                </button>
-              </form>
+
+                
             </div>
           </div>
         </nav>

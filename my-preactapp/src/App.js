@@ -22,14 +22,8 @@ const App = () => {
         <Route path="/about" component={About}></Route>
         <Route path="/contact" component={Contact}></Route>
         <Route path="/services" component={Service}></Route>
-        <Route path="/login" component={Login}></Route>
+        <Route path="/login" component={() => <Login setLoginUser={setLoginUser}></Login>}></Route>
         <Route path="/register" component={Register}></Route>
-        <Route exact path="/">
-            {
-              user && user._id ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
-            }
-          </Route>
-          <Login setLoginUser={setLoginUser}/>
         
         <Route component={Error}></Route>
       </Switch>
